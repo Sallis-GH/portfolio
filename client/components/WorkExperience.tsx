@@ -11,7 +11,7 @@ const WorkExperience = () => {
     >
       <h3 className="section-title">Experience</h3>
 
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory">
+      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#ab2dd1]/20">
         <ExperienceCard />
         <ExperienceCard />
         <ExperienceCard />
