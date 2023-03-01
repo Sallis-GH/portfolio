@@ -1,11 +1,18 @@
+import { urlFor } from "@/sanity";
+import pageInfo from "@/sanity/schemas/pageInfo";
+import { PageInfo } from "@/typings";
 import Link from "next/link";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
-const Hero = () => {
+type Props = {
+  pageInfo: PageInfo;
+}
+
+const Hero = ({pageInfo}: Props) => {
   const [text, count] = useTypewriter({
     words: [
-      "Hi, my name is Salamon",
+      `Hi, my name is ${pageInfo?.name}`,
       "Welcome to my page...",
       "Enjoy your stay!",
     ],
@@ -20,12 +27,13 @@ const Hero = () => {
       {/* TODO: Change img into React Component */}
       <img
         className="relative rounded-full h-32 w-32 mx-auto object-cover"
-        src="https://static-cdn.jtvnw.net/jtv_user_pictures/6cadbaf3-ffdf-4e6c-8629-2a54ad250193-profile_image-600x600.png"
+        src={urlFor(pageInfo?.heroImage).url()}
+        // src="https://static-cdn.jtvnw.net/jtv_user_pictures/6cadbaf3-ffdf-4e6c-8629-2a54ad250193-profile_image-600x600.png"
         alt="gnome child"
       />
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-          Software Engineer
+          {pageInfo.role}
         </h2>
         <h1 className="text-4xl lg:text-5xl font-semibold px-10">
           <span className="mr-2">{text}</span>
